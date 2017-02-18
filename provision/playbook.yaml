@@ -1,0 +1,13 @@
+---
+- name:
+  hosts: "{{ hosts_input | default('default') }}"
+  become: yes
+  # tasks:
+  
+  roles:
+    - ansible-role-docker
+  #   - angstwad.docker_ubuntu
+  #   - ansible-role-kubernetes-pod
+  #   - ansible-role-kubernetes-admin
+
+# sudo apt-get -y install docker-engine=1.11.2-0~xenial

@@ -1,0 +1,9 @@
+---
+- name: Install docker
+  
+
+- name: Install kubelet
+
+- name: Install kubectl
+
+- name: Install kubeadm

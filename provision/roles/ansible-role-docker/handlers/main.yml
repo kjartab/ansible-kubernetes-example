@@ -1,0 +1,7 @@
+---
+- name: apt_get_update
+  apt: update_cache=yes
+
+
+- name: test flush_handlers
+  debug: msg="should not run at the end"

@@ -1,0 +1,34 @@
+---
+- name: Install prerequisites
+  apt: name={{item}} state=present
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+
+- name: Add docker apt signing key
+  apt_key:
+    keyserver: pool.sks-keyservers.net
+    id: 58118E89F3A912897C070ADBF76221572C52609D
+
+
+- apt_key:
+    url: https://apt.dockerproject.org/gpg
+    state: present
+
+
+
+- name: Add docker repo 
+  apt_repository:
+    repo: deb https://apt.dockerproject.org/repo/ ubuntu-{{ ansible_distribution_release }} main
+#     repo: deb https://apt.dockerproject.org/gpg {{ansible_distribution}}-{{ ansible_distribution_release }} main
+    state: present
+
+- apt: update_cache=yes
+
+
+- name: Install docker
+  apt:
+    name: docker-engine=1.11.2-0~xenial
+    state: present
